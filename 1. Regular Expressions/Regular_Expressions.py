@@ -28,6 +28,12 @@ for line in hand:
     if re.search('From:',line):
         print(line)
 
+########################################################################
+###################           re.search()         ######################
+########################################################################
+
+#   Returns true or false
+
 print('****           ^ = startswith      *****************')
 hand=open('mbox-short.txt')
 
@@ -65,7 +71,23 @@ for line in hand:
 print()
 print('*************  re.findall()  *********************')
 
-x= 'my 2 favorite numbers are 19 and 42'
+x= 'My 2 favorite numbers are 19 and 42'
 #   all items with 1 digit or more
 y = re.findall('[0-9]+',x)
+print(y)
+
+#   Find all sequences with one or more uppercase vowels
+y = re.findall('[AEIOU]+',x)
+print(y)
+
+#   GREEDY MATCHING
+x='From: Using the : character'
+#   Starts with F and ends with : and has the largest number of characters in between
+y=re.findall('^F.+:',x)
+print(y)
+
+# NON GREEDY matching
+x='From: Using the : character'
+#   Starts with F and ends with : and has the SMALLEST number of characters in between because of ?
+y=re.findall('^F.+?:',x)
 print(y)

@@ -1,5 +1,5 @@
 #  Regular Expressions
-1.  **Regular_Expressions.py** - re.search(), ^ startswith, .* matches any number of characters, \S non-blank, + at least one, [0-9] 1 digit
+1.  **Regular_Expressions.py** - re.search(), ^ startswith, .* matches any number of characters, \S non-blank, + at least one (greedy), [0-9] 1 digit, ? is not greedy.   
 
 
 #  References
