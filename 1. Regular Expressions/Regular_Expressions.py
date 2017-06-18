@@ -55,7 +55,7 @@ for line in hand:
         print(line)
 
 print()
-print('*******    ^X-\S+: = start with X- and match at least one non-black until a :      *****************')
+print('*******    ^X-\S+: = start with X- and match at least one non-whitespace until a :      *****************')
 print()
 hand=open('mbox-short.txt')
 
@@ -90,4 +90,54 @@ print(y)
 x='From: Using the : character'
 #   Starts with F and ends with : and has the SMALLEST number of characters in between because of ?
 y=re.findall('^F.+?:',x)
+print(y)
+
+#  More advanced findall()
+
+x = 'From steph.marquard@uct.ac.za Sat Jan 5 09:04:16 2008'
+#y = re.findall('\S+@\S+',x)
+y = re.findall('^From (\S+@\S+)',x)
+print(y)
+
+fhand=open('mbox-short.txt')
+for line in fhand:
+    if line.startswith('From '):
+        y=re.findall('^From (\S+@\S+)',line)
+        print(y)
+
+#  Pull out the email domain.
+x = 'From steph.marquard@uct.ac.za Sat Jan 5 09:04:16 2008'
+#   match a single non-blank character after @ until you find a blank
+y=re.findall('@([^ ]*)',x)
+print(y)
+
+########################################################################
+##################         Spam Confidence        ######################
+########################################################################
+print()
+print('*************  Spam Confidence  *********************')
+
+hand=open('mbox-short.txt')
+numlist=list()
+
+for line in hand:
+    line=line.rstrip()
+    #   Start with X-DSPAM-Confidence:
+    #   start extracting character 0 through 9 or period "."
+    stuff=re.findall('^X-DSPAM-Confidence: ([0-9.]+)',line)
+    if len(stuff) !=1: continue
+    num = float(stuff[0])
+    numlist.append(num)
+
+print('Max = ',max(numlist))
+
+########################################################################
+##################         Escape character        #####################
+########################################################################
+print()
+print('*************  \Escape character  *********************')
+
+x = 'We just received $10.00 for cookies'
+#   Find all \$ real dollar sign elements with "." or digits after it until a space
+y = re.findall('\$[.0-9]+',x)
 print(y)
