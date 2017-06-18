@@ -65,6 +65,16 @@ for line in hand:
     if re.search('^X-\S+:',line):
         print(line)
 
+print()
+print('*******    ^From:.+@ = start with "From:" have an @ sign      *****************')
+print()
+hand=open('mbox-short.txt')
+
+for line in hand:
+    line=line.rstrip()
+    if re.search('^From:.+@',line):
+        print(line)
+
 ########################################################################
 ##################           re.findall()         ######################
 ########################################################################
