@@ -1,6 +1,6 @@
 #  Python Network Data
 
-1.  **Regular_Expressions.py**  - 
+1.  **Regular_Expressions.py**  - import re, re.search(), re.findall() using regular expression identities.  
 
 #  References
 1.  **Using Python to Access Web Data** - Michigan - Charles Severance (Coursera)   
